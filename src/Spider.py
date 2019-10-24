@@ -1,5 +1,6 @@
 from urllib.request import urlopen
 from link_finder import LinkFinder
+from colorama import Fore, Style 
 from general import *
 
 class Spider:
@@ -51,6 +52,8 @@ class Spider:
             finder = LinkFinder(Spider.base_url, page_url)
             finder.feed(html_string)
         except:
+            print(Fore.RED + 'Error: cannot crawl page')
+            print(Style.RESET_ALL)
             return set()
         return finder.page_links()
 
